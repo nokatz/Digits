@@ -1,22 +1,31 @@
 ﻿
 let canvas, ctx;
 let digit;
-let size;
+let cellSize, scale = 5;
 
 window.onload = function(){
 	
 	canvas = document.getElementById('canvas');
+	
+	canvas.width = 25 * scale;
+	canvas.height = 35 * scale;
+
 	ctx = canvas.getContext('2d');
 	
-	size = canvas.width / 5;
+	cellSize = canvas.width / 5;
 	
-	digit = new Digit(size);
+	digit = new Digit(cellSize);
 	draw();
 	
 	addEventListener('keydown', (e) => {
+		
+		// let character = String.fromCharCode(e.keyCode);
+		let character = e.key;
+		console.log(character);
 
 		if(e.keyCode > 47 && e.keyCode < 58){			
-			digit.setDigit(e.keyCode - 48);				
+			digit.setDigit(character);
+			// digit.setDigit(e.keyCode - 48);			
 			draw();
 		}
 	});

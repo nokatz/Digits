@@ -39,7 +39,11 @@ Digit.prototype.draw = function(ctx){
 		x = (index % 5) * this.size;
 		y = Math.floor(index / 5) * this.size;
 
-		ctx.fillRect(x, y, this.size, this.size);
+		// ctx.fillRect(x, y, this.size, this.size);
+		
+		ctx.beginPath();
+		ctx.arc(x + this.size / 2, y + this.size / 2, this.size / 3 + 2, 0, 2 * Math.PI, false);
+		ctx.fill();
 	}
 	
 }
