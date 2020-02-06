@@ -23,11 +23,11 @@ window.onload = function(){
 		let character = e.key;
 		console.log(character);
 
-		if(e.keyCode > 47 && e.keyCode < 58){			
+		// if(e.keyCode > 47 && e.keyCode < 58){			
 			digit.setDigit(character);
 			// digit.setDigit(e.keyCode - 48);			
 			draw();
-		}
+		// }
 	});
 	
 } 
@@ -39,20 +39,20 @@ function draw(){
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	// draw grid
-	// ctx.strokeStyle = "#00f";	
+	ctx.strokeStyle = "#00f";	
 	
-	// for(var i = 0; i < 5; i++){
-		// ctx.beginPath();
-		// ctx.moveTo( i * size, 0);
-		// ctx.lineTo( i * size, canvas.height);
-		// ctx.stroke();
-	// }
-	// for(var j = 0; j < 7; j++){
-		// ctx.beginPath();
-		// ctx.moveTo( 0, j * size);
-		// ctx.lineTo(canvas.width, j * size);
-		// ctx.stroke();
-	// }
+	for(var i = 0; i < 5; i++){
+		ctx.beginPath();
+		ctx.moveTo( i * cellSize, 0);
+		ctx.lineTo( i * cellSize, canvas.height);
+		ctx.stroke();
+	}
+	for(var j = 0; j < 7; j++){
+		ctx.beginPath();
+		ctx.moveTo( 0, j * cellSize);
+		ctx.lineTo(canvas.width, j * cellSize);
+		ctx.stroke();
+	}
 
 	// draw number
 	digit.draw(ctx);
