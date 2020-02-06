@@ -21,13 +21,12 @@ window.onload = function(){
 		
 		// let character = String.fromCharCode(e.keyCode);
 		let character = e.key;
-		console.log(character);
-
-		// if(e.keyCode > 47 && e.keyCode < 58){			
-			digit.setDigit(character);
-			// digit.setDigit(e.keyCode - 48);			
-			draw();
-		// }
+		// console.log(character);
+			
+		digit.setDigit(character);
+	
+		draw();
+		
 	});
 	
 } 
