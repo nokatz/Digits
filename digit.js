@@ -40,7 +40,7 @@ Digit.prototype.draw = function(ctx){
 		
 		// if you want circles
 		ctx.beginPath();
-		ctx.arc(offset + x + this.size / 2, y + this.size / 2, this.size / 3 + 2, 0, 2 * Math.PI, false);
+		ctx.arc(offsetX + x + this.size / 2, offsetY + y + this.size / 2, this.size / 3 + 2, 0, 2 * Math.PI, false);
 		ctx.fill();
 	}
 	

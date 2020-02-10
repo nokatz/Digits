@@ -1,21 +1,21 @@
 ﻿
 let canvas, ctx;
 let digit;
-let cellSize, scale = 5;
-let charNum = 6;
-let displayString = "", offset = 0;
-let space = 5;
+let cellSize, scale = 3;
+let charNum = 10;
+let displayString = "", offsetX = 5 * scale, offsetY = 5 * scale;
+let spaceX = 5, spaceY = 10;
 
 window.onload = function(){
 	
 	canvas = document.getElementById('canvas');
 	
-	canvas.width = charNum * 25 * scale;
-	canvas.height = 35 * scale;
+	canvas.width = (25 + spaceX) * charNum * scale;
+	canvas.height = (35 + spaceY) * scale;
 
 	ctx = canvas.getContext('2d');
 	
-	cellSize = canvas.width / (charNum * 5);
+	cellSize = canvas.width / (charNum * 6);
 	
 	digit = new Digit(cellSize);
 	draw();
@@ -25,12 +25,18 @@ window.onload = function(){
 		if(displayString.length >= charNum)
 			return;
 		
-		// let character = String.fromCharCode(e.keyCode);
-		let character = e.key;	
-		displayString += character;
+		// if backspace
+		if(e.keyCode === 8){
+			displayString = displayString.slice(0, displayString.length - 1);
+			
+		} else {
+			// let character = String.fromCharCode(e.keyCode);
+			let character = e.key;	
+			displayString += character;
+		}
 	
 		draw();		
-		
+
 	});
 	
 } 
@@ -44,13 +50,13 @@ function draw(){
 	// draw grid
 	ctx.strokeStyle = "#00f";	
 	
-	for(var i = 0; i < 5 * charNum; i++){
+	for(var i = 0; i < 6 * charNum; i++){
 		ctx.beginPath();
 		ctx.moveTo( i * cellSize, 0);
 		ctx.lineTo( i * cellSize, canvas.height);
 		ctx.stroke();
 	}
-	for(var j = 0; j < 7; j++){
+	for(var j = 0; j < 9; j++){
 		ctx.beginPath();
 		ctx.moveTo( 0, j * cellSize);
 		ctx.lineTo(canvas.width, j * cellSize);
@@ -61,8 +67,8 @@ function draw(){
 	for(let c = 0; c < displayString.length; c++){
 		digit.setDigit(displayString[c]);
 		digit.draw(ctx);
-		offset += 25 * scale;
+		offsetX += (25 + spaceX) * scale;
 	}
-	offset = 0;
+	offsetX = 5 * scale;
 	
 }
